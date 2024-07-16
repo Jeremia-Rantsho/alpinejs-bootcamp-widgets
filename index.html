@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Alpinejs on Bootcamp Functions</title>
+</head>
+
+<body>
+    <header>
+        <h1>AlpineJS widgets for Bootcamp functions</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <div x-data="greet()">
+                <div class="inputElements">
+                    <input type="text" x-model="name" placeholder="Enter a name">
+                    <select x-model="language">
+                        <option value="sotho">Sesotho</a>
+                        <option value="en">English</a>
+                        <option value="tur">Turkce</a>
+                        <option value="sw">Swahili</a>
+                    </select>
+                    <button @click="updateGreeting()">Greet</button>
+                </div>
+
+                <div class="displayGreeting">
+                    <p x-text="greeting"></p>
+                </div>
+
+            </div>
+
+
+            <div class="transportContainer" x-data="transportFeeFunc">
+                <h2>Transport Fee Function</h2>
+                <div x-data="transportFeeCalculator()">
+                    <label>Select shift:</label><br>
+                    <input type="radio" id="morning" value="morning" x-model="selectedShift">
+                    <label for="morning">Morning</label><br>
+                    <input type="radio" id="afternoon" value="afternoon" x-model="selectedShift">
+                    <label for="afternoon">Afternoon</label><br>
+                    <input type="radio" id="nightshift" value="nightshift" x-model="selectedShift">
+                    <label for="nightshift">Night Shift</label><br>
+                    <button @click="calculateFee()">Calculate Fee</button>
+                    <p x-text="fee"></p>
+                </div>
+
+            </div>
+
+            <div class="totalPhonebill" x-data="totalPhoneBillFunc">
+                <h2>Phone Bill Function</h2>
+                <div x-data="phoneBillCalculator()">
+                    <label>Enter data (comma-separated):</label>
+                    <input type="text" x-model="inputData">
+                    <button @click="calculateBill()">Calculate Bill</button>
+                    <p x-text="totalBill"></p>
+                </div>
+            </div>
+
+            <div class="isAirtimeEnough" x-data="enoughAirtimeFunc">
+                <h2>Airtime Function</h2>
+                <div x-data="airtimeCalculator()">
+                    <label for="usage">Usage (comma-separated: call, data, sms):</label>
+                    <input type="text" id="usage" x-model="usage" placeholder="e.g., call,data,sms"><br><br>
+
+                    <label for="availableAirtime">Available Airtime (R):</label>
+                    <input type="number" id="availableAirtime" x-model="availableAirtime"><br><br>
+
+                    <button @click="calculateRemainingAirtime()">Check Remaining Airtime</button><br><br>
+
+                    <div x-show="result !== null">
+                        <p>Remaining Airtime: <span x-text="result"></span></p>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <footer>
+        <span>@JD Rantsho</span>
+    </footer>
+
+    <script src="greet.js"></script>
+    <script src="transportFee.js"></script>
+    <script src="totalPhonebill.js"></script>
+    <script src="enoughAirtime.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</body>
+
+</html>
